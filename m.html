@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>متجر الأعشاب الطبيعي</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            direction: rtl;
+            font-family: "Tajawal", sans-serif;
+        }
+
+        .bg-hero {
+            background: url('https://via.placeholder.com/1920x600') no-repeat center center/cover;
+            height: 400px;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            text-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        section {
+            padding: 60px 0;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            transition: 0.3s;
+        }
+
+        footer {
+            font-size: 0.9rem;
+        }
+
+        .product-img {
+            height: 200px;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+    <!-- شريط التنقل -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow">
+        <div class="container">
+            <a class="navbar-brand" href="#">🌿 متجر الأعشاب</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#about">عن المتجر</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#products">المنتجات</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">تواصل معنا</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- العنوان الرئيسي -->
+    <header class="bg-hero text-center py-5">
+        <div class="container">
+            <h1 class="display-4 text-dark">مرحبًا بك في متجر الأعشاب الطبيعي</h1>
+            <p class="lead text-dark">أفضل الأعشاب الطبيعية لتجربة حياة صحية</p>
+            <a href="#products" class="btn btn-success btn-lg">تصفح منتجاتنا</a>
+        </div>
+    </header>
+
+    <!-- عن المتجر -->
+    <section id="about" class="py-5">
+        <div class="container text-center">
+            <h2>عن متجرنا</h2>
+            <p class="text-muted">نوفر لك أجود الأعشاب الطبيعية التي تساعدك على تحسين صحتك وحياتك اليومية. جميع منتجاتنا طبيعية 100% وتأتي من مصادر موثوقة.</p>
+        </div>
+    </section>
+
+    <!-- المنتجات -->
+    <section id="products" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-4">منتجاتنا</h2>
+            <div class="row" id="product-list">
+                <!-- سيتم ملء المنتجات ديناميكيًا -->
+            </div>
+        </div>
+    </section>
+
+    <!-- تواصل معنا -->
+    <section id="contact" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-4">تواصل معنا</h2>
+            <form class="w-50 mx-auto">
+                <div class="mb-3">
+                    <label for="name" class="form-label">الاسم</label>
+                    <input type="text" class="form-control" id="name" placeholder="أدخل اسمك">
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">البريد الإلكتروني</label>
+                    <input type="email" class="form-control" id="email" placeholder="أدخل بريدك الإلكتروني">
+                </div>
+                <div class="mb-3">
+                    <label for="message" class="form-label">رسالتك</label>
+                    <textarea class="form-control" id="message" rows="3" placeholder="اكتب رسالتك"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary w-100">إرسال</button>
+            </form>
+        </div>
+    </section>
+
+
+    <script>
+        // قائمة المنتجات
+        const products = [
+            { id: 1, name: "نعناع", price: 10, description: "عشب طبيعي منعش ومثالي لمشروبات الصيف.", image: "https://via.placeholder.com/300x200?text=نعناع" },
+            { id: 2, name: "بابونج", price: 15, description: "يساعد على تهدئة الأعصاب وتحسين النوم.", image: "https://via.placeholder.com/300x200?text=بابونج" },
+            { id: 3, name: "زنجبيل", price: 20, description: "يحسن الهضم ويعزز جهاز المناعة.", image: "https://via.placeholder.com/300x200?text=زنجبيل" },
+            { id: 4, name: "زعتر", price: 12, description: "مفيد للهضم ولإضافة نكهة إلى طعامك.", image: "https://via.placeholder.com/300x200?text=زعتر" },
+            { id: 5, name: "كركديه", price: 18, description: "يساعد على ضبط ضغط الدم.", image: "https://via.placeholder.com/300x200?text=كركديه" },
+        ];
+
+        // تحديد عنصر قائمة المنتجات
+        const productList = document.getElementById('product-list');
+
+        // عرض المنتجات ديناميكيًا
+        products.forEach(product => {
+            const productCard = `
+                <div class="col-md-4">
+                    <div class="card shadow">
+                        <img src="${product.image}" alt="${product.name}" class="card-img-top product-img">
+                        <div class="card-body">
+                            <h5 class="card-title">${product.name}</h5>
+                            <p class="card-text">${product.description}</p>
+                            <p class="text-success fw-bold">السعر: ${product.price} د</p>
+                            <button class="btn btn-primary" onclick="showProductDetails(${product.id})">عرض التفاصيل</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            productList.innerHTML += productCard;
+        });
+
+        // وظيفة عرض التفاصيل
+        function showProductDetails(productId) {
+            const product = products.find(p => p.id === productId);
+            if (product) {
+                alert(`المنتج: ${product.name}\nالوصف: ${product.description}\nالسعر: ${product.price} ر.س`);
+            }
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
